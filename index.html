@@ -1,0 +1,192 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter OTP</title>
+  </head>
+
+  <body>
+    <h1>Enter The OTP</h1>
+
+    <form>
+      <input type="text" maxlength="1" id="d1" />
+      <input type="text" maxlength="1" id="d2" />
+      <input type="text" maxlength="1" id="d3" />
+      <input type="text" maxlength="1" id="d4" />
+    </form>
+
+    <button onclick="GenerateOtp()">Generate OTP</button>
+
+    <script>
+      function GenerateOtp() {
+        let otp = "";
+
+        for (let i = 0; i < 4; i++) {
+          otp += Math.floor(Math.random() * 10);
+        }
+
+        // show OTP in input boxes
+        document.getElementById("d1").value = otp[0];
+        document.getElementById("d2").value = otp[1];
+        document.getElementById("d3").value = otp[2];
+        document.getElementById("d4").value = otp[3];
+
+        console.log("Generated OTP:", otp);
+      }
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OTP Verification</title>
+    <style>
+      input {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        text-align: center;
+        margin: 5px;
+      }
+      #celebration {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .balloon {
+        position: absolute;
+        bottom: -100px;
+        width: 40px;
+        height: 55px;
+        border-radius: 50%;
+        animation: fly 4s linear forwards;
+      }
+
+      .balloon::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 40px;
+        background: #555;
+        top: 55px;
+        left: 50%;
+      }
+
+      @keyframes fly {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-110vh);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Enter OTP</h2>
+    <div id="celebration"></div>
+
+    <div>
+      <input type="text" maxlength="1" onkeyup="moveNext(this,1)" id="d1" />
+      <input type="text" maxlength="1" onkeyup="moveNext(this,2)" id="d2" />
+      <input type="text" maxlength="1" onkeyup="moveNext(this,3)" id="d3" />
+      <input type="text" maxlength="1" onkeyup="moveNext(this,4)" id="d4" />
+    </div>
+
+    <br />
+    <button onclick="verifyOtp()">Verify OTP</button>
+    <button onclick="generateOtp()" id="resend" disabled>Resend OTP</button>
+
+    <p id="timer"></p>
+
+    <script>
+      let generatedOtp = "";
+
+      // Generate OTP
+      function generateOtp() {
+        generatedOtp = "";
+        for (let i = 0; i < 4; i++) {
+          generatedOtp += Math.floor(Math.random() * 10);
+        }
+
+        console.log("OTP:", generatedOtp); // for testing
+        startTimer();
+      }
+
+      // Auto move cursor
+      function moveNext(current, index) {
+        if (current.value.length === 1 && index < 4) {
+          document.getElementById("d" + (index + 1)).focus();
+        }
+        if (event.key === "Backspace" && index > 1) {
+          document.getElementById("d" + (index - 1)).focus();
+        }
+      }
+
+      // Verify OTP
+      function verifyOtp() {
+        let enteredOtp = d1.value + d2.value + d3.value + d4.value;
+
+        if (enteredOtp === generatedOtp) {
+          alert(" OTP Verified Successfully");
+          showCelebration();
+        } else {
+          alert(" Invalid OTP");
+        }
+      }
+
+      // Resend timer
+      function startTimer() {
+        let time = 30;
+        document.getElementById("resend").disabled = true;
+
+        let interval = setInterval(() => {
+          document.getElementById("timer").innerText =
+            "Resend OTP in " + time + " seconds";
+
+          time--;
+
+          if (time < 0) {
+            clearInterval(interval);
+            document.getElementById("timer").innerText = "";
+            document.getElementById("resend").disabled = false;
+          }
+        }, 1000);
+      }
+
+      // generate OTP on page load
+      generateOtp();
+
+      function showCelebration() {
+        const container = document.getElementById("celebration");
+
+        for (let i = 0; i < 20; i++) {
+          const balloon = document.createElement("div");
+          balloon.className = "balloon";
+
+          balloon.style.left = Math.random() * 100 + "vw";
+          balloon.style.backgroundColor = `hsl(${
+            Math.random() * 360
+          }, 80%, 60%)`;
+
+          balloon.style.animationDuration = 3 + Math.random() * 2 + "s";
+
+          container.appendChild(balloon);
+
+          setTimeout(() => balloon.remove(), 5000);
+        }
+      }
+    </script>
+  </body>
+</html>
