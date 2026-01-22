@@ -9,6 +9,12 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #f4e4ba;
+  background-image: url("./17453.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .container {
