@@ -1,11 +1,11 @@
-let person = {
-  name: "vikash kumar",
-  age: 24,
-  Gender: "Male",
-  PhoneNo: 776609878,
-};
+// let person = {
+//   name: "vikash kumar",
+//   age: 24,
+//   Gender: "Male",
+//   PhoneNo: 776609878,
+// };
 
-console.log(person);
+// console.log(person);
 
 let car = {
   brand: "Tata",
@@ -18,3 +18,6 @@ let car = {
   },
 };
 console.log(car);
+
+let obj = Object.keys(car);
+console.log(obj);
