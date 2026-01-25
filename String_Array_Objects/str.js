@@ -56,9 +56,9 @@
 
 // Reduce Method in array
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-let newReduceArray = arr.reduce((prevVal, currVal) => {
-  return prevVal + currVal;
-});
-console.log(newReduceArray);
+// let newReduceArray = arr.reduce((prevVal, currVal) => {
+//   return prevVal + currVal;
+// });
+// console.log(newReduceArray);
