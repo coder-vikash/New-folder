@@ -87,3 +87,21 @@
 //   console.log(str.charAt(0).toUpperCase() + str.slice(1));
 // }
 // captializeFirstLetter("hello world");
+
+//question 6 functions popup login after 5 sec latter
+
+// showLoginPopup = () => {
+//   setTimeout(() => {
+//     alert("Please login to continue");
+//   }, 5000);
+// };
+// showLoginPopup();
+
+//question 7 functions find the percentage of discount and final price after discount
+
+let price = prompt("Enter the price of the item:");
+let discountPercentage = prompt("Enter the discount percentage:");
+
+let result = price * (discountPercentage / 100);
+let finalPrice = price - result;
+alert("The final price after discount is: " + finalPrice);
