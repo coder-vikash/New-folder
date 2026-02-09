@@ -1,0 +1,10 @@
+.box {
+  width: 60%;
+  height: 80px;
+  background-color: red;
+}
+
+.box2 {
+  font-size: 22px;
+  text-decoration: underline;
+}

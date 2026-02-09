@@ -62,3 +62,36 @@
 //   return prevVal + currVal;
 // });
 // console.log(newReduceArray);
+
+//Question 1
+// const p = document.createElement("p");
+// p.innerText = "Hum tumse pyar nahi karte hai";
+// p.style.backgroundColor = "red";
+// p.style.color = "white";
+
+// let body = document.querySelector("body");
+// body.append(p);
+
+//Question 2
+// const div = document.querySelector(".box");
+// div.setAttribute("class", `${div.getAttribute("class")} box2`);
+// console.log(div.getAttribute("class"));
+
+//Question no 3
+
+let div = document.querySelector(".box");
+
+function changeTagName(oldNode, newTagName) {
+  if (oldNode instanceof Element) {
+    let p = document.createElement("p");
+    p.innerText = oldNode.innerText;
+
+    for (let attr of oldNode.attributes) {
+      p.setAttribute(attr.name, attr.value);
+      oldNode.replaceWith(p);
+    }
+  } else {
+    console.log("inValid TagName");
+  }
+}
+changeTagName(div, "p");
