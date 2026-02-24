@@ -30,27 +30,46 @@
 // let diff = CalculateDate(currDate, userEndDate);
 // console.log(diff);
 
-let startingDate = new Date("2025-02-25T22:02:33Z");
-let endingDate = new Date("2026-07-28T20:09:35Z");
+//Questin 47********
 
-let { DateTime } = require("luxon");
+// let startingDate = new Date("2025-02-25T22:02:33Z");
+// let endingDate = new Date("2026-07-28T20:09:35Z");
 
-function CalculateDate(start, end) {
-  let startDate = DateTime.fromISO(start.toISOString());
-  let endDate = DateTime.fromISO(end.toISOString());
+// let { DateTime } = require("luxon");
 
-  let diff = endDate.diff(startDate, [
-    "years",
-    "months",
-    "days",
-    "hours",
-    "minutes",
-    "seconds",
-  ]);
+// function CalculateDate(start, end) {
+//   let startDate = DateTime.fromISO(start.toISOString());
+//   let endDate = DateTime.fromISO(end.toISOString());
 
-  let { years, months, days, hours, minutes, seconds } = diff.toObject();
+//   let diff = endDate.diff(startDate, [
+//     "years",
+//     "months",
+//     "days",
+//     "hours",
+//     "minutes",
+//     "seconds",
+//   ]);
 
-  return `${years}year ${months}month ${days}days ${hours}hours ${minutes}minutes ${seconds}sec`;
+//   let { years, months, days, hours, minutes, seconds } = diff.toObject();
+
+//   return `${years}year ${months}month ${days}days ${hours}hours ${minutes}minutes ${seconds}sec`;
+// }
+// let diffDateNow = CalculateDate(startingDate, endingDate);
+// console.log(diffDateNow);
+
+//Question no 47*********
+
+let date = new Date("2025-04-23T20:05:23Z");
+
+function formateDate(stringDate) {
+  let dates = new Date(stringDate);
+  console.log(
+    dates.toLocaleDateString("en-IN", {
+      weekday: "long",
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }),
+  );
 }
-let diffDateNow = CalculateDate(startingDate, endingDate);
-console.log(diffDateNow);
+formateDate(date);
