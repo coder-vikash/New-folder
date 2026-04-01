@@ -74,7 +74,7 @@ function restartGame() {
 
 function timerReset() {
   timerValue.innerText = timer;
-  timer = 5;
+  timer = 10;
 }
 
 function startTimer() {
